@@ -1,5 +1,3 @@
-// Importar el modulo http
-import http from 'http';
 
 // Importar express
 import express from 'express';
@@ -16,15 +14,23 @@ app.use((req, res, next)=>{
 });
 
 app.use((req, res, next)=>{
-    console.log(`${req.method} - ${req.url}`);
+    console.log(`✨ ${req.method} - ${req.url}`);
     next();
+});
+
+app.use('/about', (req, res)=>{
+    res.send(`
+    <h1 style="color: teal">About...</h1>
+    <p style="color: #555"> Esta pagina creada para aprender 
+    desarrollo web en Fullstack con JS</p>
+    `);
 });
 
 app.use((req,res)=>{
     console.log("⭐ Respondiendo al cliente");
     res.send(`
-    <h1>Welcome to express</h1>
-    <p>This is my awesome app</p>
+    <h1>Bienvenido a express</h1>
+    <p>Este es mi software</p>
     `);
 });
 

@@ -2,9 +2,8 @@
 import express from 'express';
 
 // Importando el enrutador
-import adminRouter from './routes/admin.routes.js';
-import shopRouter from './routes/shop.routes.js';
-
+import adminRouter from './routes/admin.route.js';
+import shopRouter from './routes/shop.route.js';
 
 // Crear una instancia de express
 const app = express();

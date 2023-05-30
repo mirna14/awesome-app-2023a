@@ -2,7 +2,7 @@
 import express from 'express';
 // Importando http-status
 import httpStatus from 'http-status';
-// 
+// Se importa path
 import path from 'path';
 // Importando el enrutador
 import adminRouter from './routes/admin.route.js';
@@ -27,12 +27,8 @@ app.use(shopRouter);
 
 // Registrando middleware para el error 404
 app.use((req, res) => {
-  res.status(httpStatus.NOT_FOUND).send(`
-  <h1 
-   style="color: crimson; text-align:  center; font-size: 400%; margin: 3em 0 0 0">
-   🚫 404 RESOURSE NOT FOUND 🚫
-   </h1>
-  `);
+  res.status(httpStatus.NOT_FOUND)
+  .sendFile(path.resolve('views','404.html'))
 });
 
 // Definiendo puertos

@@ -3,7 +3,7 @@ import { Router } from 'express';
 // Importando el gestor de rutas
 import path from 'path';
 import { ROOT_DIR } from '../helpers/paths.js';
-import { Console } from 'console';
+
 
 // Creando una instancia del enrutador de express
 const router = Router();
@@ -14,7 +14,10 @@ export const products = [];
 router.get('/add-product', (req, res, next) => {
   // Servimos el formulario
   console.log("📢 Sirviendo formulario..."); 
-  res.render('add-product');
+  res.render('add-product', {
+    addProduct: `active`, 
+    viewStyle: '/css/product.css',
+    docTitle:"Add Product"});
 });
 
 // POST /admin/add-product

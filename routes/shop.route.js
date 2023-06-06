@@ -21,4 +21,8 @@ router.get('/about', (req, res) => {
   `);
 });
 
+router.use((req, res)=>{
+  res.sendFile(path.resolve('views','notfound.html'));
+});
+
 export default router;

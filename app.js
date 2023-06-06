@@ -2,6 +2,8 @@
 import express from 'express';
 // Importando http-status
 import httpStatus from 'http-status';
+// Template Engine
+import { engine } from 'express-handlebars';
 // Se importa path
 import path from 'path';
 // Importando el enrutador
@@ -13,6 +15,23 @@ import { ROOT_DIR } from './helpers/paths.js';
 
 // Crear una instancia de express
 const app = express();
+
+// Se crea instancia del template engine
+const hbsTemplateEngine = engine({
+  // Extensión de los archivos de plantillas
+  extname: '.hbs',
+  // Nombre del diseño por defecto
+  defaultLayout: 'main',
+});
+
+// TE1. Se registra en la instancia de express
+app.engine('hbs', hbsTemplateEngine);
+
+// TE2.Se selecciona el Template Engine
+app.set('view engine', 'hbs');
+
+// TE3. Se establece la ruta de las vistas
+app.set('views', path.resolve('views'));
 
 // Middleware de parseo de datos del cliente
 app.use(express.urlencoded({ extended: true}));

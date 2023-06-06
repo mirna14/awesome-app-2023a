@@ -9,7 +9,7 @@ import adminRouter from './routes/admin.route.js';
 import shopRouter from './routes/shop.route.js';
 
 //Importando ROOT_DIR
-//import { ROOT_DIR } from './helpers/paths.js';
+import { ROOT_DIR } from './helpers/paths.js';
 
 // Crear una instancia de express
 const app = express();
@@ -18,7 +18,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true}));
 
 // Se registra el middleware para servidor de archivos estaticos
-//app.use(express.static(path.join(ROOT_DIR, 'public')));
+app.use(express.static(path.join(ROOT_DIR, 'public')));
 
 // Se agrega ruta de administrador
 app.use('/admin', adminRouter);
